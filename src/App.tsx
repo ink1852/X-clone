@@ -2,6 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/layout";
 import Profile from "./routes/profile";
 import Home from "./routes/home";
+import { RouterProvider } from "react-router-dom";
+import CreateAccount from "./routes/create-account";
+import Login from "./routes/login";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,11 +23,28 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/create-account",
+    element: <CreateAccount />,
+  },
 ]);
 
+const GrobalStyle = createGlobalStyle`
+  ${reset}
+  body {
+    background-color: black;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+`;
 function App() {
   return (
     <>
+      <GrobalStyle />
       <RouterProvider router={router} />
     </>
   );
